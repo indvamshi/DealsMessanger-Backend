@@ -25,7 +25,7 @@ public class Deal implements Serializable {
 	private String postcode;
 
 	@Indexed
-	private double[] position;
+	private double[] location;
 
 	private Long expiryTime;
 
@@ -73,12 +73,12 @@ public class Deal implements Serializable {
 		this.postcode = postcode;
 	}
 
-	public double[] getPosition() {
-		return position;
+	public double[] getLocation() {
+		return location;
 	}
 
-	public void setPosition(double[] position) {
-		this.position = position;
+	public void setLocation(double[] location) {
+		this.location = location;
 	}
 
 	public Long getExpiryTime() {
@@ -134,8 +134,8 @@ public class Deal implements Serializable {
 	public String toString() {
 		return "Deal [dealId=" + dealId + ", promotionCode=" + promotionCode
 				+ ", radius=" + radius + ", dealDescription=" + dealDescription
-				+ ", postcode=" + postcode + ", position="
-				+ Arrays.toString(position) + ", expiryTime=" + expiryTime
+				+ ", postcode=" + postcode + ", location="
+				+ Arrays.toString(location) + ", expiryTime=" + expiryTime
 				+ ", currentTime=" + currentTime + ", ctg=" + ctg + "]";
 	}
 

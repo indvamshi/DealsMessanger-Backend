@@ -1,0 +1,16 @@
+ current device information...
+ {
+deviceId: "53aed2ab300465c3a8ed7851"
+version: null
+platform: "ANDROID"
+platformVersion: "4.1.2"
+uniqueDeviceId: null
+lastAccessed: null
+brand: "samsung"
+model: "SM-T210"
+created: 1403966123613
+updated: null
+location: [2]
+0:  51.4448005
+1:  -0.4120019
+-

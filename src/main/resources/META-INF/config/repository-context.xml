@@ -9,8 +9,6 @@
     http://www.springframework.org/schema/context
 	   http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-    <context:component-scan base-package="com.dealsmessanger.repository" /> 
-    
 	<!-- Connection to MongoDB server -->
 	<mongo:db-factory host="localhost" port="27017"	dbname="test" />
 <!-- 	<mongo:db-factory host="dharma.mongohq.com"
@@ -23,5 +21,8 @@
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
 	</bean>
+	
+	<mongo:repositories base-package="com.dealsmessanger.repository"/>
+	
 
 </beans>

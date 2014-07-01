@@ -8,10 +8,8 @@ public interface DealsService {
 
 	List<Deal> getDeals();
 	
-	Deal getDeal();
-	
 	Deal saveDeal(Deal deal);
 
 	void deleteAllDeals();
-
+	
 }

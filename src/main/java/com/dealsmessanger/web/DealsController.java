@@ -19,10 +19,10 @@ import com.dealsmessanger.service.DealsService;
 @Controller
 public class DealsController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(DealsController.class);
+
 	@Autowired
 	private DealsService dealsService;
-
-    private static final Logger logger = LoggerFactory.getLogger(DealsController.class);
 
     @RequestMapping(value = "/deal", method = RequestMethod.DELETE)
     @ResponseStatus( HttpStatus.OK )
