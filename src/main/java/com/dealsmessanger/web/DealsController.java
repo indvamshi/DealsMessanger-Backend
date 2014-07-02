@@ -24,6 +24,11 @@ public class DealsController {
 	@Autowired
 	private DealsService dealsService;
 
+	 @RequestMapping(value = "/deal", method = RequestMethod.GET)
+	public String showDealForm() {
+		return "deal";
+	}
+	
     @RequestMapping(value = "/deal", method = RequestMethod.DELETE)
     @ResponseStatus( HttpStatus.OK )
     public void deleteAllDeals() {

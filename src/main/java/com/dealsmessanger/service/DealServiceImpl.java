@@ -1,6 +1,5 @@
 package com.dealsmessanger.service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,8 +10,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.geo.Circle;
 import org.springframework.stereotype.Service;
 
-import com.dealsmessanger.gcm.content.Content;
-import com.dealsmessanger.gcm.content.POST2GCM;
+import com.dealsmessanger.gcm.Content;
+import com.dealsmessanger.gcm.POST2GCM;
 import com.dealsmessanger.model.Deal;
 import com.dealsmessanger.model.Device;
 import com.dealsmessanger.repository.DeviceRepository;

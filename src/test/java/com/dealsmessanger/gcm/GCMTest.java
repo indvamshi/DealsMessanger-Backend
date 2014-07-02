@@ -16,8 +16,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.dealsmessanger.gcm.content.Content;
-import com.dealsmessanger.gcm.content.POST2GCM;
+import com.dealsmessanger.gcm.Content;
+import com.dealsmessanger.gcm.POST2GCM;
 
 public class GCMTest {
 

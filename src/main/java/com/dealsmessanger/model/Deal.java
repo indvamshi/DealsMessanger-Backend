@@ -32,6 +32,8 @@ public class Deal implements Serializable {
 	private Calendar currentTime;
 
 	private Category ctg;
+	
+	private Business businessId;
 
 	public String getDealId() {
 		return dealId;
@@ -103,6 +105,14 @@ public class Deal implements Serializable {
 
 	public void setCtg(Category ctg) {
 		this.ctg = ctg;
+	}
+
+	public Business getBusinessId() {
+		return businessId;
+	}
+
+	public void setBusinessId(Business businessId) {
+		this.businessId = businessId;
 	}
 
 	@Override

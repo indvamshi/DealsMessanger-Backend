@@ -37,7 +37,8 @@
 				//var encodedata = 'jsondata='+encodeURIComponent(jsonfy);
 
 				// make Ajax Call
-				var url = 'http://10.9.98.25:8080/SpringRestExample/deal';
+				//${pageContext.request.contextPath}/api/person/
+				var url = 'http://192.168.0.10:8080/dealsmessanger/deal';
 				post_deal_data(url, deal, function(data) {
 					alert("Success");
 				});

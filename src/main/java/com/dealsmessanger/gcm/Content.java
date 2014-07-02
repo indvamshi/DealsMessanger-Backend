@@ -1,4 +1,4 @@
-package com.dealsmessanger.gcm.content;
+package com.dealsmessanger.gcm;
 
 import java.io.Serializable;
 import java.util.HashMap;

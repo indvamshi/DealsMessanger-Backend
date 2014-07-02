@@ -1,12 +1,16 @@
 package com.dealsmessanger.model;
 
+import java.io.Serializable;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "businessaddress")
-public class BusinessAddress {
+public class BusinessAddress implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private String addressId;
 	
