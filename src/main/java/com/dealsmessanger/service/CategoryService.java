@@ -6,5 +6,9 @@ public interface CategoryService {
 
 	Category saveCategory(Category ctg);
 
-	Category getCategoryByName(String string);
+	Category getCategoryByName(String cName);
+
+	void removeCategoryByName(String cName);
+	
+	void removeCategoryById(String id);
 }

@@ -26,5 +26,15 @@ public class CategoryServiceImplTest extends TestInMemoryMongo {
 		Assert.assertNotNull(categoryService.getCategoryByName("ctg1"));
 	}
 	
+	@Test
+	public void shouldDeletCategory() {
+		Category ctg = new Category();
+		ctg.setCtgName("ctg1");
+		ctg = categoryService.saveCategory(ctg);
+		
+		categoryService.removeCategoryByName("ctg1");
+	//	categoryService.removeCategoryById(ctg.getCategoryId());
+	}
+	
 	
 }

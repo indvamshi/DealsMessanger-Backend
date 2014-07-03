@@ -29,10 +29,12 @@ public class DealServiceImpl implements DealsService {
 	@Autowired
 	private DeviceRepository deviceRepository;
 	
+	@Override
 	public List<Deal> getDeals() {
 		return mongoTemplate.findAll(Deal.class);
 	}
 
+	@Override
 	public Deal saveDeal(Deal deal) {
 		if (deal.getDealId() == null) {
 			deal.setDealId(UUID.randomUUID().toString());
@@ -68,11 +70,12 @@ public class DealServiceImpl implements DealsService {
        
 	}
 
+	@Override
 	public void deleteAllDeals() {
 		mongoTemplate.dropCollection(Deal.class);;
 	}
 
-	public List<Device> findDevicesBasedOnLocation(Deal deal) {
+	private List<Device> findDevicesBasedOnLocation(Deal deal) {
 		Circle circle = new Circle(deal.getLocation()[0], deal.getLocation()[1], deal.getRadius());
 		
 		return deviceRepository.findByLocationWithin(circle);

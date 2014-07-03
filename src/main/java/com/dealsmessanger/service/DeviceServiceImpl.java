@@ -16,6 +16,7 @@ public class DeviceServiceImpl implements DeviceService {
 	@Autowired
 	private MongoTemplate mongoTemplate;
 	
+	@Override
 	public Device saveDevice(Device device) {
 		if (device.getDeviceId() == null) {
 			device.setDeviceId(UUID.randomUUID().toString());
@@ -28,6 +29,7 @@ public class DeviceServiceImpl implements DeviceService {
 		return device;
 	}
 
+	@Override
 	public List<Device> getDevices() {
 		return mongoTemplate.findAll(Device.class);
 	}

@@ -7,15 +7,17 @@ import com.dealsmessanger.model.Deal;
 
 public interface BusinessService {
 
-	Business saveBusiness();
+	Business saveBusiness(Business business);
 
 	Business getBusinessById(String id);
 	
 	Business getBusinessByName(String name);
 	
-	Business getAllBusiness();
+	List<Business> getAllBusiness();
 	
 	List<Deal> getAllDeals(String businessName);
 	
-	void removeBusiness();
+	void removeBusiness(String id);
+	
+	void removeAll();
 }

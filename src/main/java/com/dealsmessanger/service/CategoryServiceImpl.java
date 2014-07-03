@@ -17,6 +17,7 @@ public class CategoryServiceImpl implements CategoryService {
 	@Autowired
 	private MongoTemplate mongoTemplate;
 	
+	@Override
 	public Category saveCategory(Category ctg) {
 		if (ctg.getCategoryId() == null) {
 			ctg.setCategoryId(UUID.randomUUID().toString());
@@ -26,11 +27,24 @@ public class CategoryServiceImpl implements CategoryService {
 		return ctg;
 	}
 
+	@Override
 	public Category getCategoryByName(String ctgName) {
 		List<Category> ctgList = mongoTemplate.find(new Query(Criteria.where("ctgName").
 				is(ctgName)), Category.class);
 		
 		return ctgList != null && ctgList.size() > 0 ? ctgList.get(0) : null;
+	}
+
+	@Override
+	public void removeCategoryByName(String cName) {
+		List<Category> find = mongoTemplate.find(new Query(Criteria.where("ctgName").is(cName)), Category.class);
+		
+		mongoTemplate.remove(find.get(0));
+	}
+
+	@Override
+	public void removeCategoryById(String id) {
+		mongoTemplate.remove(new Query(Criteria.where("categoryId").is(id)));
 	}
 
 }

@@ -2,36 +2,34 @@ package com.dealsmessanger.service;
 
 import java.io.InputStream;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.gridfs.GridFsOperations;
+import org.springframework.data.mongodb.gridfs.GridFsTemplate;
+import org.springframework.stereotype.Service;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.gridfs.GridFSDBFile;
 import com.mongodb.gridfs.GridFSFile;
 
+@Service
 public class ImageServiceImpl implements ImageService {
 
 	@Autowired
-	private GridFsOperations gridOperation;
-
+	private GridFsTemplate gridFsTemplate;
+	
 	public String saveImage(InputStream inputStream, String contentType, String filename, String id) {
 		DBObject metaData = new BasicDBObject();
-		metaData.put("meta1", filename);
-		metaData.put("meta2", contentType);
-		metaData.put("_id", id);
+		metaData.put("targetId", id);
 
-		GridFSFile file = gridOperation.store(inputStream, filename, metaData);
+		GridFSFile file = gridFsTemplate.store(inputStream, filename, contentType, metaData);
 		
-		return file.getId().toString();
+		return file.getMetaData().get("targetId").toString();
 	}
 
 	public GridFSDBFile getImage(String id) {
-		System.out.println("Finding by ID: " + id);
-		return gridOperation.findOne(new Query(Criteria.where("_id").is(new ObjectId(id))));
+		return gridFsTemplate.findOne(new Query(Criteria.where("metadata.targetId").is(id)));
 	}
 
 }

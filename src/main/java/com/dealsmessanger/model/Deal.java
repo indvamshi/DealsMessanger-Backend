@@ -31,9 +31,9 @@ public class Deal implements Serializable {
 
 	private Calendar currentTime;
 
-	private Category ctg;
+	private String category;
 	
-	private Business businessId;
+	private String businessId;
 
 	public String getDealId() {
 		return dealId;
@@ -99,19 +99,19 @@ public class Deal implements Serializable {
 		this.currentTime = currentTime;
 	}
 
-	public Category getCtg() {
-		return ctg;
+	public String getCategory() {
+		return category;
 	}
 
-	public void setCtg(Category ctg) {
-		this.ctg = ctg;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
-	public Business getBusinessId() {
+	public String getBusinessId() {
 		return businessId;
 	}
 
-	public void setBusinessId(Business businessId) {
+	public void setBusinessId(String businessId) {
 		this.businessId = businessId;
 	}
 
@@ -146,7 +146,7 @@ public class Deal implements Serializable {
 				+ ", radius=" + radius + ", dealDescription=" + dealDescription
 				+ ", postcode=" + postcode + ", location="
 				+ Arrays.toString(location) + ", expiryTime=" + expiryTime
-				+ ", currentTime=" + currentTime + ", ctg=" + ctg + "]";
+				+ ", currentTime=" + currentTime + ", category=" + category + "]";
 	}
 
 }

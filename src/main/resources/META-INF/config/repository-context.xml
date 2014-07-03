@@ -10,19 +10,28 @@
 	   http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 	<!-- Connection to MongoDB server -->
-	<mongo:db-factory host="localhost" port="27017"	dbname="test" />
-<!-- 	<mongo:db-factory host="dharma.mongohq.com"
-                  port="10008"
-                  dbname="tweetdeals"
-                  username="vchitti"
-                  password="tweetdeals"/>
- -->
+	<mongo:db-factory host="localhost" port="27017"
+		dbname="test" />
+	<!-- <mongo:db-factory host="dharma.mongohq.com" port="10008" dbname="tweetdeals" 
+		username="vchitti" password="tweetdeals"/> -->
 	<!-- MongoDB Template -->
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
 	</bean>
-	
-	<mongo:repositories base-package="com.dealsmessanger.repository"/>
-	
+
+	<mongo:repositories base-package="com.dealsmessanger.repository" />
+
+<!-- 	<bean id="gridfsDb" factory-bean="mongoTemplate" factory-method="getDb" />
+	<bean id="imageService" class="com.rainydayinn.storage.gridfs.StorageServiceGridFSImpl">
+		<constructor-arg index="0" name="gridfsDb" ref="gridfsDb" />
+	</bean> -->
+
+	<!-- <mongo:db-factory id="mongoDbFactory" dbname="test" /> -->
+	<mongo:mapping-converter id="converter" />
+
+	<bean class="org.springframework.data.mongodb.gridfs.GridFsTemplate">
+		<constructor-arg ref="mongoDbFactory" />
+		<constructor-arg ref="converter" />
+	</bean>
 
 </beans>
