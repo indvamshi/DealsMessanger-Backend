@@ -39,7 +39,5 @@ public class Content implements Serializable {
         if(data == null)
             data = new HashMap<String,String>();
 
-        data.put("title", title);
-        data.put("message", message);
     }
 }

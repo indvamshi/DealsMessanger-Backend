@@ -31,11 +31,6 @@
 				deal.text = text;
 				deal.radius = radius;
 
-				//var myObj = {postcode: postCode, text: text, radius : radius};
-				//	var jsonfy = $.toJSON(deal);
-				// Encodes special characters
-				//var encodedata = 'jsondata='+encodeURIComponent(jsonfy);
-
 				// make Ajax Call
 				//${pageContext.request.contextPath}/api/person/
 				var url = 'http://192.168.0.10:8080/dealsmessanger/deal';
