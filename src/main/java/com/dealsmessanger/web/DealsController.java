@@ -29,16 +29,16 @@ public class DealsController {
 		return "deal";
 	}
 	
-    @RequestMapping(value = "/deal", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deals", method = RequestMethod.DELETE)
     @ResponseStatus( HttpStatus.OK )
     public void deleteAllDeals() {
         logger.info("deleting all deals");
         dealsService.deleteAllDeals();
     }
     
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/deal", method = RequestMethod.POST, headers = "content-type=application/json")
     public @ResponseBody Deal saveDeal(@RequestBody Deal deal) {
-    	logger.debug("radius .........."+deal.getRadius());
+    	logger.debug("radius .........."+deal.toString());
     	return dealsService.saveDeal(deal);
     }
     
@@ -47,4 +47,8 @@ public class DealsController {
     	return dealsService.getDeals();
     }
     
+    @RequestMapping(value = "/deal/{id}", method = RequestMethod.GET)
+    public @ResponseBody Deal getDealInfo(@RequestBody String id) {
+    	return dealsService.getDealInfo(id);
+    }
 }

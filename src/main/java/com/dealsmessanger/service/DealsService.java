@@ -11,5 +11,7 @@ public interface DealsService {
 	Deal saveDeal(Deal deal);
 
 	void deleteAllDeals();
+
+	Deal getDealInfo(String id);
 	
 }

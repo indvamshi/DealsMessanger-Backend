@@ -38,6 +38,8 @@ public class Content implements Serializable {
     public void createData(String title, String message){
         if(data == null)
             data = new HashMap<String,String>();
+        
+        data.put(title, message);
 
     }
 }

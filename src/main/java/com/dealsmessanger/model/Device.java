@@ -43,7 +43,9 @@ public class Device implements Serializable {
 	private double[] location;
 	
 	private String gcmRegId;
-
+	
+	private String imei;
+	
 	public String getDeviceId() {
 		return deviceId;
 	}
@@ -140,6 +142,14 @@ public class Device implements Serializable {
 		this.gcmRegId = gcmRegId;
 	}
 
+	public String getImei() {
+		return imei;
+	}
+
+	public void setImei(String imei) {
+		this.imei = imei;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -181,7 +191,8 @@ public class Device implements Serializable {
 				+ platformVersion + ", uniqueDeviceId=" + uniqueDeviceId
 				+ ", lastAccessed=" + lastAccessed + ", brand=" + brand
 				+ ", model=" + model + ", created=" + created + ", updated="
-				+ updated + ", location=" + Arrays.toString(location) + "]";
+				+ updated + ", location=" + Arrays.toString(location)
+				+ ", gcmRegId=" + gcmRegId + ", imei=" + imei + "]";
 	}
 	
 }

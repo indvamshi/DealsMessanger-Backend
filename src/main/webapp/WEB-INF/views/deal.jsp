@@ -15,27 +15,34 @@
 		$("#form").submit(function(e) {
 
 			e.preventDefault();
-			var userId, postCode, text, radius;
-			userId = $("#userId").val();
-			postCode = $("#postCode").val();
-			text = $("#text").val();
+			var dealId, postcode, longitude, latitude, dealDescription, radius;
+			dealId = $("#dealId").val();
+			postcode = $("#postcode").val();
+			longitude =  $("#longitude").val();
+			latitude =  $("#latitude").val();
+			dealDescription = $("#dealDescription").val();
 			radius = $("#radius").val();
 
-			if (postCode.length > 0 && text.length > 0 && radius.length > 0) {
-				alert("radius :" + radius);
+			if (longitude.length > 0 && longitude.length > 0 && dealDescription.length > 0 && radius.length > 0) {
 				//Deal Object		
 				var deal = new Object();
 
-				deal.userid = userId;
-				deal.postcode = postCode;
-				deal.text = text;
+				if (dealId != "" || dealId != null) {
+					deal.dealId = dealId;
+				}
+				deal.postcode = postcode;
+				deal.dealDescription = dealDescription;
 				deal.radius = radius;
+				
+				var locationArray = [];
+				locationArray[0] = parseFloat(longitude);
+				locationArray[1] = parseFloat(latitude);
+				
+				deal.location = locationArray;
 
 				// make Ajax Call
-				//${pageContext.request.contextPath}/api/person/
-				var url = 'http://192.168.0.10:8080/dealsmessanger/deal';
+				var url = "http://localhost:8080/dealsmessanger/deal";
 				post_deal_data(url, deal, function(data) {
-					alert("Success");
 				});
 
 			}
@@ -46,40 +53,39 @@
 
 	function post_deal_data(url, deal, success) {
 		$.ajax({
-			type : "POST",
+		    contentType : "application/json",
+		    type : "POST",
 			url : url,
-			data : {
-				"postcode" : "TWsadf",
-				"text" : "asdf",
-				"radius" : 3
-			},
+			data : JSON.stringify(deal),
 			dataType : "json",
 			restful : true,
-			contentType : 'application/json',
 			cache : false,
 			timeout : 20000,
-			async : true,
-			beforeSend : function(data) {
-			},
+			async : false,
 			success : function(data) {
+				document.getElementById("dealId").value = data.dealId;
+				$(this).html("Success!");
 				success.call(this, data);
 			},
-			error : function(data) {
-				alert("Error In Connecting");
+			error : function(jqXHR, textStatus, errorThrown) {
+				$(this).html("Error!");
+				alert("Error In Connecting"+errorThrown);
 			}
 		});
-	}
+	};
 </script>
 </head>
 
 
 <body>
 	<form method='post' action='' id='form'>
-		<input type="hidden" id="userId" name="userId" /> PostCode <input
-			type='text' name='postCode' id='postCode' /><br /> Text
-		<textarea name="text" id="text" rows="5" cols="20"></textarea>
-		<br /> Radius <input type='text' name='radius' id='radius' /><br /> <input
-			type='submit' name="Submit" id='submit' />
+		<input type="hidden" id="dealId" name="dealId" />
+		longitude <input type='text' name='longitude' id='longitude' /><br />
+		latitude <input	type='text' name='latitude' id='latitude' /><br />
+		Postcode <input	type='text' name='postcode' id='postcode' /><br /> 
+		Deal Description <textarea name="dealDescription" id="dealDescription" rows="5" cols="20"></textarea>
+		<br /> Radius <input type='text' name='radius' id='radius' /><br />
+		<input type='submit' name="Submit" id='submit' />
 	</form>
 </body>
 </html>
