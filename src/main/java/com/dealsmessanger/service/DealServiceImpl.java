@@ -1,7 +1,9 @@
 package com.dealsmessanger.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -44,7 +46,6 @@ public class DealServiceImpl implements DealsService {
 		
 		List<Device> deviceList = findDevicesBasedOnLocation(deal);
 		
-		// for testing send notifications to all devices...
 		if (deviceList.size() > 0) {
 			
 			logger.debug("sending notifications to devices size :"+deviceList.size());
@@ -57,8 +58,28 @@ public class DealServiceImpl implements DealsService {
 
 	private void sendNotification(List<Device> devices, Deal deal) {
 		// TODO Auto-generated method stub
-		
+		List<String> regIdList = new ArrayList<String>();
 		for(Device device : devices) {
+			regIdList.add(device.getGcmRegId());
+		}
+		
+		Content content = new Content();
+		
+		content.getRegistration_ids().addAll(regIdList);
+		content.createData("msg", deal.getDealDescription());
+		content.createData("lati", Double.toString(deal.getLocation()[1]));
+		content.createData("longi", Double.toString(deal.getLocation()[0]));
+		content.createData("radius", Double.toString(deal.getRadius()));
+		
+		// assuming the expiry time set in UI is in minutes format, so 
+		// convert into milliseconds
+		content.createData("exp", Long.toString(TimeUnit.MINUTES.toMillis(2)));
+		content.createData("dealId", deal.getDealId());
+        String result = POST2GCM.post(API_KEY, content);
+        
+        logger.debug("result from GCM--------->>>>>>>>>>>>>>>>>"+result);
+
+/*		for(Device device : devices) {
 			Content content = new Content();
 			
 			content.addRegId(device.getGcmRegId());
@@ -71,7 +92,7 @@ public class DealServiceImpl implements DealsService {
 	        String result = POST2GCM.post(API_KEY, content);
 	        
 	        logger.debug("result from GCM--------->>>>>>>>>>>>>>>>>"+result);
-		}
+		}*/
        
 	}
 

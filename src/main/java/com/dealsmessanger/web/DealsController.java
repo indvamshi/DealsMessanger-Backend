@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,8 @@ import com.dealsmessanger.model.Deal;
 import com.dealsmessanger.service.DealsService;
 
 @Controller
+@RequestMapping("/merchant")
+@PreAuthorize("hasRole('ROLE_MERCHANT')")
 public class DealsController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(DealsController.class);
@@ -24,7 +27,7 @@ public class DealsController {
 	@Autowired
 	private DealsService dealsService;
 
-	 @RequestMapping(value = "/deal", method = RequestMethod.GET)
+	@RequestMapping(value = "/deal", method = RequestMethod.GET)
 	public String showDealForm() {
 		return "deal";
 	}

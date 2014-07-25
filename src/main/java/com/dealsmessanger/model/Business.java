@@ -31,7 +31,9 @@ public class Business implements Serializable {
 	private BusinessAddress businessAddress;
 	
 	private List<Deal> deal;
-
+	
+	private String role = "ROLE_MERCHANT";
+	
 	public String getBusinessId() {
 		return businessId;
 	}
@@ -97,5 +99,13 @@ public class Business implements Serializable {
 			deal = new ArrayList<Deal>();
 		}
 		this.deal = deal;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 }

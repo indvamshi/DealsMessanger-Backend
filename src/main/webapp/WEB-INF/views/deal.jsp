@@ -15,15 +15,17 @@
 		$("#form").submit(function(e) {
 
 			e.preventDefault();
-			var dealId, postcode, longitude, latitude, dealDescription, radius;
+			var dealId, postcode, longitude, latitude, dealDescription, radius, expiryTime;
 			dealId = $("#dealId").val();
 			postcode = $("#postcode").val();
 			longitude =  $("#longitude").val();
 			latitude =  $("#latitude").val();
 			dealDescription = $("#dealDescription").val();
 			radius = $("#radius").val();
+			expiryTime = $("#expiryTime").val();
 
-			if (longitude.length > 0 && longitude.length > 0 && dealDescription.length > 0 && radius.length > 0) {
+			if (longitude.length > 0 && longitude.length > 0 && dealDescription.length > 0 
+					&& radius.length > 0 && expiryTime.length > 0) {
 				//Deal Object		
 				var deal = new Object();
 
@@ -33,6 +35,7 @@
 				deal.postcode = postcode;
 				deal.dealDescription = dealDescription;
 				deal.radius = radius;
+				deal.expiryTime = expiryTime;
 				
 				var locationArray = [];
 				locationArray[0] = parseFloat(longitude);
@@ -85,6 +88,7 @@
 		Postcode <input	type='text' name='postcode' id='postcode' /><br /> 
 		Deal Description <textarea name="dealDescription" id="dealDescription" rows="5" cols="20"></textarea>
 		<br /> Radius <input type='text' name='radius' id='radius' /><br />
+		Expiry in minutes <input type='text' name='expiryTime' id='expiryTime' /><br />
 		<input type='submit' name="Submit" id='submit' />
 	</form>
 </body>

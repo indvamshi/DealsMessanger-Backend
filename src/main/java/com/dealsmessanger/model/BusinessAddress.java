@@ -22,12 +22,12 @@ public class BusinessAddress implements Serializable {
 	
 	private String city;
 	
-	@Indexed
+	//@Indexed
 	private String postCode;
 	
 	private String state;
 	
-	@Indexed
+	//@Indexed
 	private String country;
 	
 	private String telephone1;

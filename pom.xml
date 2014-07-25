@@ -14,6 +14,7 @@
 		<apache.commons.lang3>3.3.2</apache.commons.lang3>
 		<apache.filesupload.version>1.2</apache.filesupload.version>
 		<spring.version>4.0.0.RELEASE</spring.version>
+		<spring.security.version>3.2.4.RELEASE</spring.security.version>
 		<org.aspectj-version>1.7.4</org.aspectj-version>
 		<spring.data>1.2.1.RELEASE</spring.data>
 		<java.version>1.6</java.version>
@@ -73,6 +74,35 @@
 			<version>${spring.data}</version>
 		</dependency>
 
+		<!-- Spring security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.security.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.security.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+				
 		<!-- MongoDB Java Driver -->
 		<dependency>
 			<groupId>org.mongodb</groupId>

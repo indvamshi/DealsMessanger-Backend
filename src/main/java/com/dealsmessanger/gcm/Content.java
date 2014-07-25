@@ -1,6 +1,7 @@
 package com.dealsmessanger.gcm;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,6 +19,9 @@ public class Content implements Serializable {
 	}
 
 	public void setRegistration_ids(List<String> registration_ids) {
+		if(registration_ids == null) {
+			registration_ids = new ArrayList<String>();
+		}
 		this.registration_ids = registration_ids;
 	}
 

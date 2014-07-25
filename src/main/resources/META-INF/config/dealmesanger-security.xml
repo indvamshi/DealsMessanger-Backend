@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+http://www.springframework.org/schema/security 
+http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<!-- Global Security Settings -->
+	<global-method-security pre-post-annotations="enabled" />
+	
+	<http pattern="/index" security="none" />
+	<http pattern="/login" security="none" />
+	
+	<http entry-point-ref="restAuthenticationEntryPoint">
+		<intercept-url pattern="/merchant" access="ROLE_MERCHANT" />
+		<intercept-url pattern="/admin" access="ROLE_ADMIN" />
+		<intercept-url pattern="/superadmin" access="ROLE_SUPERADMIN" />
+		<form-login login-page="/login" login-processing-url="/loginProcessing"
+			authentication-failure-url="/login?err=true" username-parameter="username"
+			password-parameter="password"/>
+
+		<logout invalidate-session="true" logout-success-url="/index"
+			logout-url="/logout" delete-cookies="true" />
+
+	</http>
+
+	<authentication-manager>
+		<authentication-provider ref="customAuthenticationProvider" />
+	</authentication-manager>
+    
+</beans:beans>

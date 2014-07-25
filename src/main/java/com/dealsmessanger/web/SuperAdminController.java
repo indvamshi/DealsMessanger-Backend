@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/merchant")
-@PreAuthorize("hasRole('ROLE_MERCHANT')")
-public class BusinessController {
+@RequestMapping("/superadmin")
+@PreAuthorize("hasRole('ROLE_SUPERADMIN')")
+public class SuperAdminController {
 
-	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-	public String showDashboard() {
-		return "merchantdb";
+	@RequestMapping(value = "/superAdminDashboard", method = RequestMethod.GET)
+	public String showDashboardForSuperAdmin() {
+		return "superadmindb";
 	}
 }

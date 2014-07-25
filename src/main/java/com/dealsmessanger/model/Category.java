@@ -14,7 +14,7 @@ public class Category implements Serializable {
 	@Id
 	private String categoryId;
 
-	@Indexed
+	//@Indexed
 	private String ctgName;
 
 	public String getCategoryId() {

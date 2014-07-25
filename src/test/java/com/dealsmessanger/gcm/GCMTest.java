@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.logging.Log;
 import org.apache.http.HttpResponse;
@@ -28,11 +29,15 @@ public class GCMTest {
     {
         System.out.println( "Sending POST to GCM" );
 
-        Content content = createContent();
+    //    Content content = createContent();
 
-        POST2GCM.post(API_KEY, content);
+   //     POST2GCM.post(API_KEY, content);
         
        // sendNotification();
+        
+        
+        int hours = 2;
+        System.out.println(TimeUnit.HOURS.toMillis(1));
     }
 
     public static Content createContent(){

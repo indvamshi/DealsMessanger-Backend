@@ -10,10 +10,10 @@
 	   http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 	<!-- Connection to MongoDB server -->
-	<mongo:db-factory host="localhost" port="27017"
-		dbname="test" />
-	<!-- <mongo:db-factory host="dharma.mongohq.com" port="10008" dbname="tweetdeals" 
-		username="vchitti" password="tweetdeals"/> -->
+<!-- 	<mongo:db-factory host="localhost" port="27017"
+		dbname="test" /> -->
+	<mongo:db-factory host="ds053479.mongolab.com" port="53479" dbname="dealsmessanger" 
+		username="test" password="test"/>
 	<!-- MongoDB Template -->
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
