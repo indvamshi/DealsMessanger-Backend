@@ -6,6 +6,8 @@
 Welcome <c:out value=""></c:out>!
 <br/>
 This is the main page!
-<a href="http://localhost:8080/dealsmessanger/login.html">login</a>
+
+<a href="<%=request.getContextPath()%>/login.html">login</a>
+
 </body>
 </html>
